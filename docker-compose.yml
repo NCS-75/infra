@@ -12,7 +12,7 @@ services:
       - POSTGRES_USER=odoo
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - postgresql/data:/var/lib/postgresql/data/pgdata
+      - ./postgresql/data:/var/lib/postgresql/data/pgdata
   odoo:
     image: odoo:13.0
     container_name: odoo
@@ -25,9 +25,9 @@ services:
       - USER=odoo
       - PASSWORD=odoo
     volumes:
-      - odoo/addons:/mnt/extra-addons
-      - odoo/config:/etc/odoo
-      - odoo/log:/var/log/odoo
-      - odoo/data:/var/lib/odoo
+      - ./odoo/addons:/mnt/extra-addons
+      - ./odoo/config:/etc/odoo
+      - ./odoo/log:/var/log/odoo
+      - ./odoo/data:/var/lib/odoo
     depends_on:
       - postgres
